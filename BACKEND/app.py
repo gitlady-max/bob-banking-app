@@ -5,7 +5,7 @@ Defines the Flask app object, configuration, and all URL routes.
 
 import os
 import sys
-from datetime import timedelta
+from datetime import datetime, timedelta, timezone
 
 from flask import (
     Flask,
@@ -45,6 +45,11 @@ app.secret_key = os.environ.get("SECRET_KEY", "dev-secret-key-change-in-producti
 # Session lifetime: 30 minutes of inactivity
 app.permanent_session_lifetime = timedelta(minutes=30)
 
+# Security: prevent JavaScript from reading the session cookie
+app.config["SESSION_COOKIE_HTTPONLY"] = True
+# SameSite=Lax prevents CSRF on cross-site form submissions
+app.config["SESSION_COOKIE_SAMESITE"] = "Lax"
+
 # ── Initialise the database (creates tables and seeds data if needed) ─────────
 with app.app_context():
     init_db()
@@ -61,6 +66,12 @@ def currency_filter(value):
         return f"£{float(value):,.2f}"
     except (ValueError, TypeError):
         return "£0.00"
+
+
+@app.context_processor
+def inject_now():
+    """Make `now` available in every Jinja2 template (used by the footer)."""
+    return {"now": datetime.now(timezone.utc)}
 
 
 # ─────────────────────────────────────────────────────────────────────────────
