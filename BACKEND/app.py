@@ -156,6 +156,19 @@ def withdraw():
 @login_required
 def withdraw_post():
     raw_amount = request.form.get("amount", "")
+    if not raw_amount or raw_amount.strip() == "":
+        balance = get_account_balance(session["customer_id"])
+        return render_template("withdraw.html", error="Amount is required", balance=balance), 422
+    try:
+        amount = float(raw_amount)
+    except ValueError:
+        amount = None
+    if amount is None or amount <= 0:
+        balance = get_account_balance(session["customer_id"])
+        return render_template("withdraw.html", error="Amount must be greater than zero", balance=balance), 422
+    current_balance = get_account_balance(session["customer_id"])
+    if amount > current_balance:
+        return render_template("withdraw.html", error="Insufficient funds", balance=current_balance), 422
     success, result = process_withdrawal(session["customer_id"], raw_amount)
     if success:
         flash(f"Withdrawal successful! New balance: £{result:,.2f}", "success")
