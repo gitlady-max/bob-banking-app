@@ -1,0 +1,30 @@
+﻿# Virtual environment
+venv/
+
+# Python bytecode
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# SQLite database files
+*.db
+
+# Bob AI assistant workspace
+.bob/
+
+# Pytest cache
+.pytest_cache/
+
+# Docs folder
+docs/
+
+# OS-generated files
+.DS_Store
+Thumbs.db
+
+# Editor/IDE files
+.vscode/
+.idea/
+*.swp
+*.swo

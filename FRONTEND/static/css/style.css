@@ -1,0 +1,66 @@
+/* ────────────────────────────────────────────────────────────────────────
+   style.css  — Custom overrides for SecureBank
+   Bootstrap 5 is the foundation; only intentional deviations live here.
+   ──────────────────────────────────────────────────────────────────────── */
+
+/* ── Typography ──────────────────────────────────────────────────────────── */
+body {
+  font-family: -apple-system, "Segoe UI", system-ui, sans-serif;
+  background-color: #f4f6f9;
+  color: #1f2328;
+}
+
+/* ── Navbar ──────────────────────────────────────────────────────────────── */
+.navbar-brand {
+  font-size: 1.25rem;
+  letter-spacing: -0.02em;
+}
+
+/* ── Cards ───────────────────────────────────────────────────────────────── */
+.card {
+  border-radius: 0.75rem;
+}
+
+/* ── Balance display on dashboard ────────────────────────────────────────── */
+.balance-display {
+  font-size: 2.5rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+/* ── Action buttons on dashboard ─────────────────────────────────────────── */
+.btn-action {
+  border-radius: 0.75rem;
+  transition: transform 0.1s ease;
+}
+
+.btn-action:hover {
+  transform: translateY(-2px);
+}
+
+/* ── Transaction history table ───────────────────────────────────────────── */
+.table th {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #6c757d;
+  font-weight: 600;
+}
+
+/* ── Utility: tight badge pill ───────────────────────────────────────────── */
+.badge.rounded-pill {
+  font-size: 0.78rem;
+  font-weight: 500;
+}
+
+/* ── Footer ──────────────────────────────────────────────────────────────── */
+.footer {
+  font-size: 0.8rem;
+}
+
+/* ── Responsive tweaks ───────────────────────────────────────────────────── */
+@media (max-width: 575.98px) {
+  .display-5 {
+    font-size: 1.75rem;
+  }
+}

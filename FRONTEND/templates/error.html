@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block title %}Error {{ code }} — SecureBank{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+  <div class="col-12 col-md-6 text-center py-5">
+    <div class="display-1 text-muted mb-3">{{ code }}</div>
+    <h1 class="h3 fw-bold mb-2">Oops!</h1>
+    <p class="text-muted">{{ message }}</p>
+    <a href="{{ url_for('index') }}" class="btn btn-primary mt-3">Go to Home</a>
+  </div>
+</div>
+{% endblock %}
